@@ -3,7 +3,7 @@
 font-family: 'Avenir LT Std 85 Heavy';
 font-style: normal;
 font-weight: normal;
-src: local('Avenir LT Std 85 Heavy'), url('http://localhost:3000/images/AvenirLTStd-Heavy.woff') format('woff');
+src: local('Avenir LT Std 85 Heavy'), url('images/AvenirLTStd-Heavy.woff') format('woff');
 }
 
 
@@ -11,7 +11,7 @@ src: local('Avenir LT Std 85 Heavy'), url('http://localhost:3000/images/AvenirLT
 font-family: 'Avenir LT Std 35 Light';
 font-style: normal;
 font-weight: normal;
-src: local('Avenir LT Std 35 Light'), url('http://localhost:3000/images/AvenirLTStd-Light.woff') format('woff');
+src: local('Avenir LT Std 35 Light'), url('images/AvenirLTStd-Light.woff') format('woff');
 }
 
 form {
