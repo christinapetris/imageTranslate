@@ -69,8 +69,82 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(5000, function () {
-  console.log('Example app listening on port 4000!');
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
 });
 
-module.exports = app;
+app.get('/', function(req, res){
+    res.render('response', { title: 'My app eyeTranslate' });
+});
+
+
+//module.exports = app;
+
+//probs wont work
+
+var express = require('express');
+var router = express.Router();
+//var fs = require('fs');
+
+var watson = require('watson-developer-cloud');
+var fs = require('fs');
+var visual_recognition = watson.visual_recognition({
+  api_key: '9c6313e33e3c9807b9ae41132e414838ba9465e2',
+    version: 'v3',
+  version_date: '2016-05-20'
+}); 
+
+/* GET home page. */
+//router.get('/', function(req, res){
+//     res.render('index', { title: 'My app eyeTranslate' });
+//});
+
+var fileUpload = require('express-fileupload');
+
+app.use(fileUpload());
+
+app.post('/upload', function(req, res) {
+        var sampleFile;
+        if (!req.files) {
+            res.send('No files were uploaded.');
+            return;
+        }
+
+        sampleFile = req.files.sampleFile;
+        sampleFile.mv('public/images/sampleFile.jpg', function(err) {
+            if (err) {
+                res.status(500).send(err);
+            }
+            else {
+                //res.send('File uploaded!');
+                
+                var params = {
+                  images_file: fs.createReadStream('public/images/samplefile.jpg')
+                };
+
+                
+                visual_recognition.classify(params, function(err, watRes){
+                    if (err){
+                        console.log(err);
+                        //res.send(err);
+                    }
+                    else{
+                        //console.log(JSON.stringify(watRes, null, 2));
+                        //res.json(watRes);
+                        var classes = watRes.images[0].classifiers[0].classes;
+                        var context  = { classes: classes }
+                        console.log(JSON.stringify(context, null, 2));
+
+                        res.render('response', context);
+
+                        //appRes.send('<b>Hello World</b> yay');
+
+                    }
+                }); 
+
+                
+                
+                //res.render('response', { title: 'My app eyeTranslate' });
+            }
+        });
+});
