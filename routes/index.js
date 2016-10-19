@@ -14,7 +14,9 @@ var visual_recognition = watson.visual_recognition({
 router.get('/', function(req, res){
      res.render('index', { title: 'My app eyeTranslate' });
 });
-
+router.get('/fish', function(req, res){
+     res.render('response', { title: 'My app eyeTranslate' });
+});
 var fileUpload = require('express-fileupload');
 
 router.use(fileUpload());

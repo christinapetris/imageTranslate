@@ -139,7 +139,7 @@
                              <form ref='uploadForm' 
             id='uploadForm' 
             action='/upload' 
-            method='post' 
+            method='POST' 
             encType="multipart/form-data">
                 <input type="file" name="sampleFile" id=chooseFile />
                 <input type='submit' value='Upload!' id="upload"  class="btn btn-primary btn-block"/>
