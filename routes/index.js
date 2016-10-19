@@ -27,40 +27,40 @@ router.post('/upload', function(req, res) {
         }
 
         sampleFile = req.files.sampleFile;
-        sampleFile.mv('./public/images/sampleFile.jpg', function(err) {
+        sampleFile.mv('public/images/sampleFile.jpg', function(err) {
             if (err) {
                 res.status(500).send(err);
             }
             else {
                 //res.send('File uploaded!');
                 
-                var params = {
-                  images_file: fs.createReadStream('./public/images/samplefile.jpg')
-                };
+//                var params = {
+//                  images_file: fs.createReadStream('public/images/samplefile.jpg')
+//                };
+//
+//                
+//                visual_recognition.classify(params, function(err, watRes){
+//                    if (err){
+//                        console.log(err);
+//                        //res.send(err);
+//                    }
+//                    else{
+//                        //console.log(JSON.stringify(watRes, null, 2));
+//                        //res.json(watRes);
+//                        var classes = watRes.images[0].classifiers[0].classes;
+//                        var context  = { classes: classes }
+//                        console.log(JSON.stringify(context, null, 2));
+//
+//                        res.render('response', context);
+//
+//                        //appRes.send('<b>Hello World</b> yay');
+//
+//                    }
+//                }); 
 
                 
-                visual_recognition.classify(params, function(err, watRes){
-                    if (err){
-                        console.log(err);
-                        //res.send(err);
-                    }
-                    else{
-                        //console.log(JSON.stringify(watRes, null, 2));
-                        //res.json(watRes);
-                        var classes = watRes.images[0].classifiers[0].classes;
-                        var context  = { classes: classes }
-                        console.log(JSON.stringify(context, null, 2));
-
-                        res.render('response', context);
-
-                        //appRes.send('<b>Hello World</b> yay');
-
-                    }
-                }); 
-
                 
-                
-                //res.render('response', { title: 'My app eyeTranslate' });
+                res.render('response', { title: 'My app eyeTranslate' });
             }
         });
 });
