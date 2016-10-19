@@ -12,7 +12,8 @@ var visual_recognition = watson.visual_recognition({
 
 /* GET home page. */
 router.get('/', function(req, res){
-     res.render('index', { title: 'My app eyeTranslate' });
+     //res.render('index', { title: 'My app eyeTranslate' });
+    res.render('response', { title: 'My app eyeTranslate' });
 });
 router.get('/fish', function(req, res){
      res.render('response', { title: 'My app eyeTranslate' });
