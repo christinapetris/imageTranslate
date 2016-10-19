@@ -27,7 +27,7 @@ router.post('/upload', function(req, res) {
         }
 
         sampleFile = req.files.sampleFile;
-        sampleFile.mv('./public/images/sampleFile.jpg', function(err) {
+        sampleFile.mv('images/sampleFile.jpg', function(err) {
             if (err) {
                 res.status(500).send(err);
             }
@@ -35,7 +35,7 @@ router.post('/upload', function(req, res) {
                 //res.send('File uploaded!');
                 
                 var params = {
-                  images_file: fs.createReadStream('./public/images/samplefile.jpg')
+                  images_file: fs.createReadStream('images/samplefile.jpg')
                 };
 
                 
