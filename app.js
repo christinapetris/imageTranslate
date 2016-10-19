@@ -69,9 +69,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-app.listen(3000, function () {
-  console.log('Example app listening on port 3000!');
-});
+
 
 app.get('/', function(req, res){
     res.render('response', { title: 'My app eyeTranslate' });
@@ -147,4 +145,7 @@ app.post('/upload', function(req, res) {
                 //res.render('response', { title: 'My app eyeTranslate' });
             }
         });
+});
+app.listen(3000, function () {
+  console.log('Example app listening on port 3000!');
 });
